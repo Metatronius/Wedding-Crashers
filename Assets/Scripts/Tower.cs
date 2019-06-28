@@ -8,7 +8,8 @@ public class Tower : Entity
 {
 	public List<Sprite> Sprites;
 	public Sprite HighlightSprite;
-
+    public int BulletDamage;
+    public int BulletSpeed;
 	public int Health { get; set; }
 	public float AttackProgress { get; set; }
 	public float AttackTime { get; set; }
@@ -62,12 +63,20 @@ public class Tower : Entity
             {
 				// shoot the bullet
 				Animate();
-                Instantiate(TowerBullet, this.transform.position + new Vector3(0, .3f * Mathf.Sin(System.DateTime.Now.Millisecond), -2), this.transform.rotation);
+                ShootBullet();
+                //Instantiate(TowerBullet, this.transform.position + new Vector3(0, .3f * Mathf.Sin(System.DateTime.Now.Millisecond), -2), this.transform.rotation);
 
             }
 
             this.AttackProgress %= AttackTime;
         }
+    }
+    private FriendlyBullet ShootBullet()
+    {
+        var bullet = Instantiate(TowerBullet, this.transform.position + new Vector3(0, .3f * Mathf.Sin(System.DateTime.Now.Millisecond), -1), this.transform.rotation).GetComponent<FriendlyBullet>();
+        bullet.Initialize(BulletDamage, BulletSpeed, new Vector2(1, 0));
+
+        return bullet;
     }
 
 	public void OnMouseEnter()
@@ -117,14 +126,22 @@ public class Tower : Entity
 		this.gameObject.GetComponent<SpriteRenderer>().sprite = Sprites[0];
 	}
 
-	public void Upgrade()
+	public void UpgradeSpeed()
 	{
 		Level++;
 		ShowUpgrade();
 		HP *= 2;
-		AttackTime /= 2;
+		AttackTime = Cooldown/(Level * .8f);
 		Refresh();
 	}
+
+    public void UpgradeDamage()
+    {
+        Level++;
+        ShowUpgrade();
+        HP *= 2;
+        
+    }
 
 	public void ShowUpgrade()
 	{

@@ -56,7 +56,7 @@ public class UpgradeButton : MonoBehaviour
 		if (resourceManager.ResourceCount >= selectedTower.UpgradeCost)
 		{
 			resourceManager.ResourceCount -= selectedTower.UpgradeCost;
-			selectedTower.Upgrade();
+			selectedTower.UpgradeSpeed();
 			Deselect();
 		}
 	}

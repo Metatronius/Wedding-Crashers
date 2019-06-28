@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
 		
 		this.gameObject.transform.Translate(MoveDirection.normalized * MoveSpeed * Time.deltaTime);
