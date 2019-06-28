@@ -16,6 +16,7 @@ public class RoundManager : MonoBehaviour
 	private bool gameOver;
 	private Button retryButton;
 	private UpgradeButton upgradeButton;
+    public bool IsTimerZero { get; set; }
 
 	// Start is called before the first frame update
 	void Start()
@@ -24,6 +25,7 @@ public class RoundManager : MonoBehaviour
 		upgradeButton = Resources.FindObjectsOfTypeAll<UpgradeButton>().Single();
 		retryButton.gameObject.SetActive(false);
 		IsRoundOver = true;
+        IsTimerZero = true;
 		RoundNumber = 1;
 		RoundTimer = RoundDuration;
 		roundButton = FindObjectsOfType<Button>().Single(button => (button.CompareTag("RoundButton")));
@@ -36,22 +38,22 @@ public class RoundManager : MonoBehaviour
 		if(!IsRoundOver)
 		{
 			RoundTimer -= Time.deltaTime;
-			if (RoundTimer <= 0)
-			{
-
-				IsRoundOver = true;
-
-			}
-		}
-		if(RoundTimer<=0 && FindObjectOfType<Enemy>() == null && !gameOver)
-		{
-			EndRound();
-			RoundTimer = RoundDuration;
+            if(RoundTimer <= 0)
+            {
+                IsTimerZero = true;
+            }
+		    if(IsTimerZero && FindObjectOfType<Enemy>() == null && !gameOver)
+		    {
+		    	EndRound();
+		    	RoundTimer = RoundDuration;
+                IsRoundOver = true;
+            }
 		}
 	}
 	public void StartRound()
 	{
 		IsRoundOver = false;
+        IsTimerZero = false;
 		roundButton.gameObject.SetActive(false);
 		upgradeButton.Deselect();
 		upgradeButton.gameObject.SetActive(false);

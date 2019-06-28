@@ -50,7 +50,7 @@ public class EnemySpawnCoordinator : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (!roundManager.IsRoundOver || mochi)
+		if ( !roundManager.IsTimerZero || mochi)
 		{
 			timeSinceLastSpawn += Time.deltaTime;
 

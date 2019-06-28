@@ -8,11 +8,12 @@ public class Tower : Entity
 {
 	public List<Sprite> Sprites;
 	public Sprite HighlightSprite;
-    public int BulletDamage;
+    public int BulletDamage { get; set; }
     public int BulletSpeed;
 	public int Health { get; set; }
 	public float AttackProgress { get; set; }
 	public float AttackTime { get; set; }
+    public int Damage;
 	public GameObject TowerBullet;
 	public float Cooldown;
 	public float Range;
@@ -43,6 +44,7 @@ public class Tower : Entity
         AttackTime = Cooldown;
         AttackProgress = AttackTime;
         AttackRange = Range;
+        BulletDamage = Damage;
 		upgradeButton = Resources.FindObjectsOfTypeAll<UpgradeButton>().Single();
 		roundManager = FindObjectOfType<RoundManager>();
     }
@@ -140,7 +142,7 @@ public class Tower : Entity
         Level++;
         ShowUpgrade();
         HP *= 2;
-        
+        BulletDamage += Damage;
     }
 
 	public void ShowUpgrade()

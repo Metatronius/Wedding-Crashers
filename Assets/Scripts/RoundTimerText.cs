@@ -20,7 +20,7 @@ public class RoundTimerText : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (!roundManager.IsRoundOver)
+		if (!roundManager.IsTimerZero)
 		{
 			displayText.text = $"Round {roundManager.RoundNumber}:\n{(int)roundManager.RoundTimer} Seconds";
 		}

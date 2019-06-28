@@ -50,8 +50,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c8ec7ec543d0a6e4c8fcbec2500bdaa0, type: 3}
   - {fileID: 21300000, guid: 344d5de0e19cdc64aaf3c07fc993fc46, type: 3}
   HighlightSprite: {fileID: 21300000, guid: 2a4d65bdf98395b43b4a00a76aa7b35b, type: 3}
-  BulletDamage: 1
-  BulletSpeed: 8
+  BulletSpeed: 10
+  Damage: 1
   TowerBullet: {fileID: 2170558180284194152, guid: 429a2e423d5b5754ab4cf11cbacebd72,
     type: 3}
   Cooldown: 0.2
