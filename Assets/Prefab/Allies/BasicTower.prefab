@@ -55,11 +55,11 @@ MonoBehaviour:
   TowerBullet: {fileID: 2170558180284194152, guid: 429a2e423d5b5754ab4cf11cbacebd72,
     type: 3}
   Cooldown: 0.2
-  Range: 13
+  Range: 10
   HP: 20
   Cost: 100
   Level: 1
-  UpgradeCostPerLevel: 360
+  UpgradeCostPerLevel: 150
 --- !u!212 &9174691742963851953
 SpriteRenderer:
   m_ObjectHideFlags: 0

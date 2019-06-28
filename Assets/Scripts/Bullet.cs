@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-	private float flipInterval = .1f;
+	private readonly float flipInterval = .1f;
 	private float flipMeter = 0;
 
 	public int AttackDamage;
@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected void Update()
+     void Update()
     {
 		
 		this.gameObject.transform.Translate(MoveDirection.normalized * MoveSpeed * Time.deltaTime);
