@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    public static readonly int GRID_WIDTH = 4;
+    public static readonly int GRID_WIDTH = 5;
     public static readonly int GRID_HEIGHT = 4;
-    public Entity[,] grid = new Entity[GRID_HEIGHT,GRID_WIDTH];
+    public Entity[,] grid = new Entity[GRID_WIDTH,GRID_HEIGHT];
     public Entity BaseTile;
 
     // Start is called before the first frame update
@@ -35,9 +35,9 @@ public class Map : MonoBehaviour
     }
 	public void FillEmptySpaces()
 	{
-		for (int y = 0; y <= grid.GetUpperBound(0); y++)
+		for (int x = 0; x < grid.GetLength(0); x++)
 		{
-			for (int x = 0; x <= grid.GetUpperBound(1); x++)
+			for (int y = 0; y < grid.GetLength(1); y++)
 			{
 				if (grid[x, y] == null)
 				{
