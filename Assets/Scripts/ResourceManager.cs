@@ -1,22 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
-	private Text displayText;
-	public  int ResourceCount;
-	// Start is called before the first frame update
-	void Start()
-	{
-		displayText = GetComponent<Text>();
-	}
-	
+	public int ResourceCount;
 
-	// Update is called once per frame
-	void Update()
+	public bool Spend(int amount)
 	{
-		displayText.text = $"Hecks:\n{ResourceCount}";
+		if(ResourceCount >= amount)
+		{
+			ResourceCount -= amount;
+			return true;
+		}
+
+		return false;
+	}
+
+	public void Gain(int amount)
+	{
+        ResourceCount += amount;
 	}
 }
