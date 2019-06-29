@@ -17,6 +17,6 @@ public class BaseHealthText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        displayText.text = $"Cake:\n{throne.Health}/{throne.HP}";
+        displayText.text = $"Cake:\n{throne.Health}/{throne.BaseHealth}";
     }
 }

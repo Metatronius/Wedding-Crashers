@@ -18,17 +18,21 @@ public class Tower : Entity
 	public float Cooldown;
 	public float Range;
 	public float AttackRange { get; set; }
-	public int HP;
+	public int BaseHealth;
 	public int Cost;
-	public int Level;
+	public int SpeedLevel;
+    public int DamageLevel;
 	public int UpgradeCostPerLevel;
 	public bool IsSelected { get; set; }
+
+	public Attack TowerAttack {get;set;}
+	public Health TowerHealth {get;set;}
 
 	public int UpgradeCost
 	{
 		get
 		{
-			return Level * UpgradeCostPerLevel;
+			return (1 + SpeedLevel + DamageLevel) * UpgradeCostPerLevel;
 		}
 	}
 
@@ -40,7 +44,7 @@ public class Tower : Entity
     // Start is called before the first frame update
     protected void Start()
     {
-        Health = HP;
+        Health = BaseHealth;
         AttackTime = Cooldown;
         AttackProgress = AttackTime;
         AttackRange = Range;
@@ -124,24 +128,24 @@ public class Tower : Entity
 
 	public void Refresh()
 	{
-		Health = HP;
+		Health = BaseHealth;
 		this.gameObject.GetComponent<SpriteRenderer>().sprite = Sprites[0];
 	}
 
 	public void UpgradeSpeed()
 	{
-		Level++;
+		SpeedLevel++;
 		ShowUpgrade();
-		HP *= 2;
-		AttackTime = Cooldown/(Level * .8f);
+		BaseHealth *= 2;
+		AttackTime = Cooldown/(SpeedLevel * .8f);
 		Refresh();
 	}
 
     public void UpgradeDamage()
     {
-        Level++;
+        DamageLevel++;
         ShowUpgrade();
-        HP *= 2;
+        BaseHealth *= 2;
         BulletDamage += Damage;
     }
 

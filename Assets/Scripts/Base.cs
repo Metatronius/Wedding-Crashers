@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class Base : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int HP;
+    public int BaseHealth;
     public int Health {get; set;}
 	public List<Sprite> Sprites;
     void Start()
     {
-        Health = HP;
+        Health = BaseHealth;
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class Base : MonoBehaviour
 			}
 			else
 			{
-				this.gameObject.GetComponent<SpriteRenderer>().sprite = Sprites[(int)(Health / (float)HP * Sprites.Count)];
+				this.gameObject.GetComponent<SpriteRenderer>().sprite = Sprites[(int)(Health / (float)BaseHealth * Sprites.Count)];
 			}
         }
     }
